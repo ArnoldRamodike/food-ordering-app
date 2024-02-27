@@ -14,11 +14,11 @@ function Hero() {
           complete on a work day
         </p>
         <div className="flex gap-4 text-sm">
-            <button className="bg-primary text-white flex items-center gap-4 px-4 py-2 rounded-full uppercase after:">
+            <button className=" flex justify-center bg-primary text-white flex items-center gap-4 px-4 py-2 rounded-full uppercase after:">
               Order Now
               <Right/>
             </button>
-            <button className="flex gap-2 py-2 text-gray-600 font-semibold">
+            <button className="flex items-center border-0 gap-2 py-2 text-gray-600 font-semibold">
               Learn More
               <Right/>
               </button>
