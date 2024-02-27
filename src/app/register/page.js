@@ -7,13 +7,17 @@ import Image from 'next/image';
 function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    function handleFormSbumit(ev) {
+    const [creatingUser, setCreatingUser] = useState(false)
+    const [userCreated, setUserCreated] = useState(true)
+
+   async function handleFormSbumit(ev) {
         ev.preventDefault();
-        fetch('/api/register',{
+        await fetch('/api/register', {
             method: 'POST',
             body: JSON.stringify({email, password}),
-            headers: {"Content-Type": "application/json"}, 
-        });
+            headers: {'Content-Type': 'application/json'},
+          });
+        setCreatingUser(false);
     }
 
   return (
