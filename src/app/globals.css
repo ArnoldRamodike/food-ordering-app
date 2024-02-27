@@ -12,7 +12,7 @@ input[type="email"],
 input[type="password"], 
 input[type="text"]{
     @apply block w-full my-2 rounded-xl;
-    @apply border p-2 border-gray-300 bg-green-100;
+    @apply border p-2 border-gray-300 bg-gray-100;
 } 
 
 input[type="email"]:disabled,
@@ -29,4 +29,8 @@ button{
 }
 button[type="submit"], .submit{
     @apply border-0 bg-primary text-white
+}
+
+button[type="submit"]:disabled, .submit:disabled{
+    @apply cursor-not-allowed bg-red-400;
 }
