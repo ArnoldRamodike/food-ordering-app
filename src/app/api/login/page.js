@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import {useState} from "react";
 import Image from 'next/image';
-import Link from 'next/link'
+import Link from 'next/link';
+import {signIn} from "next-auth/react";
 
 const login = () => {
     const [email, setEmail] = useState('');
@@ -15,19 +16,8 @@ const login = () => {
         setLoginInProgress(true);
         setError(false);
 
-        await signIn('credentials', {email,password})
-    //    const response =  await fetch('/api/login', {
-    //         method: 'POST',
-    //         body: JSON.stringify({email, password}),
-    //         headers: {'Content-Type': 'application/json'},
-    //       });
-    //       if (response.ok) {
-    //         setUserCreated(true);
-    //       }
-    //       else{
-    //         setError(true);
-    //       }
-    //       setLoginInProgress(false);
+        await signIn('credentials', {email, password, callbackUrl:'/'});
+
     }
 
   return (
@@ -38,14 +28,17 @@ const login = () => {
 
    <form className="block max-w-xs mx-auto" onSubmit={handleFormSbumit}>
         <input type="email" placeholder="email" value={email} onChange={ev => setEmail(ev.target.value)} disabled={loginInProgress}/>
-        <input type="password" placeholder="password" value={password} onChange={ev => setPassword(ev.target.value)} disabled={loginInProgress}></input>
+        <input type="password" placeholder="password" value={password} onChange={ev => setPassword(ev.target.value)} disabled={loginInProgress}/>
+
         <button type="submit" disabled={loginInProgress}>Login</button>
-        <div className="my-4 text-center text-gray-500"> or login with Provider</div>
-        <button className="flex gap-4 justify-center" >
+
+        <div className=" my-4 text-center text-gray-500"> or login with Provider</div>
+            <button type="button" onClick={() => signIn('google', {callbackUrl:'/'})} className="flex gap-4 justify-center" >
             <Image img={'/pizza.png'} alt={'google'} width={32} height={32} />
             Login with google
             </button>
        <div className='text-center my-4 border-t pt-4'>
+
          No account ?{' '}
         <Link className='underline ' href={'/register'}>Register here &raquo;</Link>
        </div>
