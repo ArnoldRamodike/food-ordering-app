@@ -30,7 +30,7 @@ export default function Home() {
      <section className="text-center mt-8">
        <SectionHeader MainHeader={'Contact us'} subHeader={'Dont hesitate'}/>
         <div className="mt-8">
-          <a className="text-4xl underline text-gray-500" href="tel: 08488829"> +084 9978787 8u</a>
+          <a className="text-4xl underline text-gray-500" href="tel: 08488829"> +27 739710004</a>
         </div>
   
      </section>

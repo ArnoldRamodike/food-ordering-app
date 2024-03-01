@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 
 import {useState} from "react";
@@ -34,7 +35,7 @@ const login = () => {
 
         <div className=" my-4 text-center text-gray-500"> or login with Provider</div>
             <button type="button" onClick={() => signIn('google', {callbackUrl:'/'})} className="flex gap-4 justify-center" >
-            <Image img={'/pizza.png'} alt={'google'} width={32} height={32} />
+            <Image src={'/google.png'} alt={'google'} width={32} height={32} />
             Login with google
             </button>
        <div className='text-center my-4 border-t pt-4'>
