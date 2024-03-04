@@ -21,7 +21,12 @@ const UserSchema = new Schema({
                 new Error('Password must be at lest 5 characters');
             }
         }
-    }
+    },
+    
+    image: {
+        type: String
+    },
+
 }, {timestamps: true});
 
 UserSchema.post('validate', (user) => {
