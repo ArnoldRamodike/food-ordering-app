@@ -41,6 +41,10 @@ const UserSchema = new Schema({
     country: {
         type: String
     },
+    admin: {
+        type: Boolean,
+        default: false
+    },
 
 }, {timestamps: true});
 
