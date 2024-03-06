@@ -3,6 +3,7 @@
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation';
 import Image from 'next/image'
+import UserTabs from '@/components/layout/UserTabs';
 import React, { useEffect, useState } from 'react'
 import {toast} from 'react-hot-toast';
 
@@ -15,6 +16,8 @@ const Profile = () => {
     const [city, setCity] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [profileFetched, setProfileFetched] = useState(false);
     const {status} = session;
 
     useEffect(() => {
@@ -27,7 +30,9 @@ const Profile = () => {
             setstreetAddress(data.streetAddress);
             setPostalCode(data.postalCode);
             setCity(data.city);
-            setCountry(data.country)
+            setCountry(data.country);
+            setIsAdmin(data.admin);
+            setProfileFetched(true);
           })
         });
       }
@@ -78,7 +83,7 @@ const Profile = () => {
       }
     }
 
-    if (status === 'loading') {
+    if (status === 'loading' || !profileFetched) {
         return <p className='p-10 text-center'>loading...</p>;
     }
     if (status === 'unauthenticated') {
@@ -88,12 +93,9 @@ const Profile = () => {
     const userEmail = session?.data.user.email;
     
   return (
-    <section className='mt-8 text-center'>
-     <h1 className="text-centre text-primary text-4xl mb-4">
-        Profile
-    </h1>
-       
-    <div className='max-w-md mx-auto '>
+    <section className='mt-8 '>
+      <UserTabs  isAdmin={isAdmin}/>       
+     <div className='max-w-md mx-auto mt-8 '>
        <div className='flex gap-4'>
         <div>
             <div className='p-2 rounded-lg relative max-w-120'>
@@ -125,7 +127,7 @@ const Profile = () => {
             <button type='submit'>Save</button>
         </form>
        </div>
-    </div>
+     </div>
     </section>
   )
 }
