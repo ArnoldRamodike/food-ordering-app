@@ -9,7 +9,7 @@ export async function POST(req) {
     return Response.json(categoryDoc);
 }
 
-export async function Get(){
+export async function GET(){
     mongoose.connect(process.env.MONGO_URL)
     return Response.json(
         await Category.find()
