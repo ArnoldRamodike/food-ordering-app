@@ -14,7 +14,7 @@ export async function PUT(req){
 
         //update all fields
         await User.updateOne({email}, {name: data.name, image: data.image});
-        await UserInfo.updateOne({email}, {otherUserInfo});
+        await UserInfo.findOneAndUpdate({email}, otherUserInfo, {upsert: true});
     return Response.json(true);
 
 }

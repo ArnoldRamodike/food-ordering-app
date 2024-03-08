@@ -117,7 +117,7 @@ const Profile = () => {
             <input type='email' placeholder='email' disabled={true} value={userEmail}/>
             <input type='tel' placeholder='Phone number' value={phone} onChange={ev => setPhone(ev.target.value)} />
             <input type='text' placeholder='Street address'  value={streetAddress} onChange={ev => setstreetAddress(ev.target.value)} />
-            <div className='flex gap-2'> 
+            <div className='flex gap-2 py-2'> 
               <input type='text' placeholder='City'  value={city} onChange={ev => setCity(ev.target.value)}  style={{margin: '0'}}/>
               <input type='text' placeholder='Postal code'  value={postalCode} onChange={ev => setPostalCode(ev.target.value)} style={{margin: '0'}}/>
             </div>
