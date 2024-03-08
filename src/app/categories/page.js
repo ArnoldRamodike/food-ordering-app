@@ -3,7 +3,7 @@
 //import DeleteButton from "@/components/DeleteButton";
 import UserTabs from "@/components/layout/UserTabs";
 import {useEffect, useState} from "react";
-import {useProfile} from "@/components/UseProfile";
+import {useProfile} from "@/components/layout/UseProfile";
 import toast from "react-hot-toast";
 
 export default function CategoriesPage() {
@@ -49,7 +49,9 @@ export default function CategoriesPage() {
       loading: editedCategory
                  ? 'Updating category...'
                  : 'Creating your new category...',
-      success: editedCategory ? 'Category updated' : 'Category created',
+      success: editedCategory 
+                ? 'Category updated' 
+                : 'Category created',
       error: 'Error, sorry...',
     });
   }
@@ -79,9 +81,9 @@ export default function CategoriesPage() {
     return 'Loading user info...';
   }
 
-  if (!profileData.admin) {
-    return 'Not an admin';
-  }
+  // if (!profileData.admin) {
+  //   return 'Not an admin';
+  // }
 
   return (
     <section className="mt-8 max-w-2xl mx-auto">
