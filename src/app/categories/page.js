@@ -1,6 +1,6 @@
 'use client';
 
-//import DeleteButton from "@/components/DeleteButton";
+import DeleteButton from "@/components/layout/DeleteButton";
 import UserTabs from "@/components/layout/UserTabs";
 import {useEffect, useState} from "react";
 import {useProfile} from "@/components/layout/UseProfile";
@@ -21,8 +21,8 @@ export default function CategoriesPage() {
     fetch('/api/categories').then(res => {
       res.json().then(categories => {
         setCategories(categories);
-      });
-    });
+      })
+    })
   }
 
   async function handleCategorySubmit(ev) {
@@ -135,9 +135,9 @@ export default function CategoriesPage() {
               >
                 Edit
               </button>
-              {/* <DeleteButton
+              <DeleteButton
                 label="Delete"
-                onDelete={() => handleDeleteClick(c._id)} /> */}
+                onDelete={() => handleDeleteClick(c._id)} />
             </div>
           </div>
         ))}
