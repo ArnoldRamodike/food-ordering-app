@@ -9,6 +9,12 @@ export async function POST(req) {
     return Response.json(categoryDoc);
 }
 
+export async function PUT(req){
+    const {_id, name} =  await req.json();
+    await Category.updateOne({_id}, {name});
+    return Response.json(true);
+}
+
 export async function GET(){
     mongoose.connect(process.env.MONGO_URL)
     return Response.json(
