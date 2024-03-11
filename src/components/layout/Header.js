@@ -19,8 +19,8 @@ function Header() {
       <Link className= 'text-primary font-semibold text-2xl' href="/" >
         RICCOR
       </Link>
-      <Link href={''}>Home</Link>
-      <Link href={''}>Menu</Link>
+      <Link href={'/'}>Home</Link>
+      <Link href={'/menu-items'}>Menu</Link>
       <Link href={''}>About</Link>
       <Link href={''}>Contact</Link>    
     </nav>
