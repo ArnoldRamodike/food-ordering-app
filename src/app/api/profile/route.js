@@ -7,7 +7,7 @@ import { UserInfo } from "../../models/UserInfo";
 export async function PUT(req){
     mongoose.connect(process.env.MONGO_URl);
 
-    const data = await req.json;
+    const data = await req.json();
     const {name, image, ...otherUserInfo} = data
     const session = await getServerSession(authOptions);
     const email = session.user.email;

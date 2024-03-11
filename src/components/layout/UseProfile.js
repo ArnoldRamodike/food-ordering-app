@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function useProfile () {
  const [data, setData] = useState(false);
@@ -14,6 +14,6 @@ export function useProfile () {
       })
     }, []);
 
- return(loading, data);
+ return {loading, data};
 }
 

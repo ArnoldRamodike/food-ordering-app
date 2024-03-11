@@ -22,7 +22,7 @@ const UserInfoSchema = new Schema ({
     },
     admin: {
         type: Boolean,
-        default: true
+        default: false
     },
 }, {timeStamp: true});
 

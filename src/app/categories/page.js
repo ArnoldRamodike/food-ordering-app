@@ -81,9 +81,11 @@ export default function CategoriesPage() {
     return 'Loading user info...';
   }
 
-  // if (!profileData.admin) {
-  //   return 'Not an admin';
-  // }
+  if (!profileData.admin) {
+    return 'Not an admin';
+  }
+
+
 
   return (
     <section className="mt-8 max-w-2xl mx-auto">
