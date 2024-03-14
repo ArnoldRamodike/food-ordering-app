@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import UserTabs from "@/components/layout/UserTabs";
 import {useProfile} from "@/components/layout/UseProfile";
+import DeleteButton from "@/components/layout/DeleteButton";
 import toast from "react-hot-toast";
 import Link from 'next/link';
 import Left from '@/components/icons/Left';
@@ -48,6 +49,26 @@ export default function EditMenuItemPage() {
        setRedirectToItem(true);
     }
 
+    function handleDeleteClick(){
+       const promise = new Promise(async(resolve, reject) => {
+        const res = await fetch('/api/menu-items?_id='+id, {
+            method: 'DELETE',
+        });
+        if (res.ok) 
+            resolve();
+        else
+            reject();
+
+       });
+
+       toast.promise(promise, {
+        loading: 'Deleating...',
+        success: 'Item Deleted',
+        error: 'An Error occured.'
+       });
+       setRedirectToItem(true);
+    }
+
     if (redirectToItem) {
         return redirect('/menu-items');
     }
@@ -70,6 +91,11 @@ export default function EditMenuItemPage() {
             </Link>
          </div>        
         <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit}/>
+        <div className='max-w-md mx-auto mt-4'>
+            <div className='max-w-xs ml-auto pl-4'>
+                <DeleteButton label={'Delete menu Item'} onDelete={() => handleDeleteClick()} />
+            </div>
+        </div>
     </section>  
   )
 }
