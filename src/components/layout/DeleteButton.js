@@ -1,6 +1,7 @@
 import {useState} from "react";
 
 export default function DeleteButton({label,onDelete}) {
+  
   const [showConfirm, setShowConfirm] = useState(false);
 
   if (showConfirm) {
