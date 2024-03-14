@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import EditableImage from '@/components/layout/EditableImage';
+import Trash from '@/components/icons/Trash';
+import Plus from '@/components/icons/Plus';
 
 export default function MenuItemForm ({onSubmit, menuItem}) {
 
@@ -23,6 +25,11 @@ export default function MenuItemForm ({onSubmit, menuItem}) {
             return newSizes;
         })
     }
+
+    function removeSize(indexToRemove){
+        setSizes(prev => prev.filter((v, index) =>
+        index !== indexToRemove));
+    }
   
     return (
     <>
@@ -44,19 +51,24 @@ export default function MenuItemForm ({onSubmit, menuItem}) {
              <div className='bg-gray-200 p-2 rounded-md mb-2'>
                 <label>Sizes</label>
                 {Sizes?.length > 0 && Sizes.map((size, index) => (
-                    <div className='flex gap-2' key={index}>
+                    <div className='flex items-end gap-2' key={index}>
                         <div>
                             <label>Size name</label>
                             <input type='text' placeholder='Size nname' value={size.name} onChange={ev => editSize(ev, index, 'name' )}/>
                         </div>
                         <div>
-                        <label>Size name</label>
+                        <label>Size price</label>
                             <input type='text' placeholder='Extra Price' value={size.price} onChange={ev => editSize(ev, index, 'price')}/>
+                        </div>
+                        <div>
+                            <button type='button' onClick={() => removeSize(index)} className='bg-white mb-2 px-0'><Trash/></button>
                         </div>
 
                     </div>
                 ))}
-                <button type='button' onClick={addSize} className='bg-white'>Add Size price</button>
+                <button type='button' onClick={addSize} className='bg-white items-center'> 
+                    <Plus className='w-4 h-4'/> Add Size price
+                </button>
              </div>
              <button className='mb-2' type='submit'>Save</button> 
             </div>
