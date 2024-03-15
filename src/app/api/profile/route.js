@@ -8,7 +8,7 @@ export async function PUT(req){
     mongoose.connect(process.env.MONGO_URl);
 
     const data = await req.json();
-    const {id, name, image, ...otherUserInfo} = data;
+    const {_id, name, image, ...otherUserInfo} = data;
 
     let filter = {};
     if (_id) {
@@ -27,16 +27,15 @@ export async function PUT(req){
 
 }
 
-export async function GET(){
+export async function GET(req){
     mongoose.connect(process.env.MONGO_URl);
 
     const url = new URL(req.url);
-    url.searchParams.get('_id');
+    const _id = url.searchParams.get('_id');
 
-    let filterUser= {};
+    let filterUser = {};
     if (_id) {
         filterUser = {_id};
-
 
     }else{
          const session = await getServerSession(authOptions);
@@ -47,7 +46,8 @@ export async function GET(){
          filterUser = {email};
     } 
 
-    const user =  await User.findOne({_id}).lean();
+    
+    const user =  await User.findOne(filterUser).lean();
     const userInfo =  await UserInfo.findOne({email: user.email}).lean();
 
     return Response.json({...user, ...userInfo} );
