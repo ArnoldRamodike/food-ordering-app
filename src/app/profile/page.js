@@ -11,20 +11,17 @@ import {toast} from 'react-hot-toast';
 const Profile = () => {
     const session = useSession();
     const [user, setUser] = useState(null)
-    const [isAdmin, setIsAdmin] = useState(false);
     const [profileFetched, setProfileFetched] = useState(false)
     
     const {status} = session;
 
     useEffect(() => {
-      if (status === 'authenticated') {
         fetch('/api/profile').then(response => {
           response.json().then(data => {
             setUser(data);
             setProfileFetched(true);
           })
         });
-      }
     }, [session, status])
     
 
