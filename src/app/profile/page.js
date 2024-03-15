@@ -3,35 +3,24 @@
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation';
 import UserTabs from '@/components/layout/UserTabs';
+import UserForm from '@/components/layout/UserForm';
 import EditableImage from '@/components/layout/EditableImage';
 import React, { useEffect, useState } from 'react'
 import {toast} from 'react-hot-toast';
 
 const Profile = () => {
     const session = useSession();
-    const [userName, setUserName] = useState( '');
-    const [image, setImage] = useState('');
-    const [phone, setPhone] = useState('');
-    const [streetAddress, setstreetAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [postalCode, setPostalCode] = useState('');
-    const [country, setCountry] = useState('');
+    const [user, setUser] = useState(null)
     const [isAdmin, setIsAdmin] = useState(false);
-    const [profileFetched, setProfileFetched] = useState(false);
+    const [profileFetched, setProfileFetched] = useState(false)
+    
     const {status} = session;
 
     useEffect(() => {
       if (status === 'authenticated') {
-        setUserName(session.data.user.name);
-        setImage(session.data.user.image);
         fetch('/api/profile').then(response => {
           response.json().then(data => {
-            setPhone(data.phone);
-            setstreetAddress(data.streetAddress);
-            setPostalCode(data.postalCode);
-            setCity(data.city);
-            setCountry(data.country);
-            setIsAdmin(data.admin);
+            setUser(data);
             setProfileFetched(true);
           })
         });
@@ -39,24 +28,15 @@ const Profile = () => {
     }, [session, status])
     
 
-    async function handleProfileInfoUpdate(ev){
+    async function handleProfileInfoUpdate(ev, data){
         ev.preventDefault();
-        toast('Saving...')
+        toast('Saving...');
         const reponse = await fetch('/api/profile', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              name : userName, 
-              image,
-              phone,
-              streetAddress,
-              city,
-              postalCode,
-              country
-            }),
-           
+            body: JSON.stringify(data ),   
         })
-
+  
         if (reponse.ok) {
            toast.success('Save Complete')
         }else{
@@ -94,32 +74,9 @@ const Profile = () => {
     
   return (
     <section className='mt-8 '>
-      <UserTabs  isAdmin={isAdmin}/>       
+      <UserTabs  isAdmin={true}/>       
      <div className='max-w-md mx-auto mt-8 '>
-       <div className='flex gap-4'>
-        <div>
-          <div className='p-2 rounded-lg relative max-w-[120px]'>
-            <EditableImage link={image} setLink={setImage}/>
-            
-          </div>
-        </div>
-         
-        <form className='grow' onSubmit={handleProfileInfoUpdate}>
-            <label>First and last name</label>
-            <input type='text' placeholder='First and last Name' value={userName} onChange={ev => setUserName( ev.target.value)}/>
-            <input type='email' placeholder='email' disabled={true} value={userEmail}/>
-            <input type='tel' placeholder='Phone number' value={phone} onChange={ev => setPhone(ev.target.value)} />
-            <input type='text' placeholder='Street address'  value={streetAddress} onChange={ev => setstreetAddress(ev.target.value)} />
-            <div className='flex gap-2 py-2'> 
-              <input type='text' placeholder='City'  value={city} onChange={ev => setCity(ev.target.value)}  style={{margin: '0'}}/>
-              <input type='text' placeholder='Postal code'  value={postalCode} onChange={ev => setPostalCode(ev.target.value)} style={{margin: '0'}}/>
-            </div>
-            
-            <input type='text' placeholder='Country'  value={country} onChange={ev => setCountry(ev.target.value)} />
-
-            <button type='submit'>Save</button>
-        </form>
-       </div>
+      <UserForm user={user} onSave={handleProfileInfoUpdate} />
      </div>
     </section>
   )
