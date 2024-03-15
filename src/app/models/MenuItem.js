@@ -1,4 +1,4 @@
-const { Schema, models, model } = require("mongoose");
+import mongoose, { Schema, models, model } from  "mongoose";
 
 const ExtraPriceSchema = new Schema({
     name: String,
@@ -16,6 +16,9 @@ const MenuItemSchema = new Schema ({
 
     description: {
         type: String,  
+    },
+    category: {
+        type: mongoose.Types.ObjectId,  
     },
     basePrice: {
         type: Number, 
