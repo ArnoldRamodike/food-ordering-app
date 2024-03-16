@@ -4,7 +4,6 @@ import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation';
 import UserTabs from '@/components/layout/UserTabs';
 import UserForm from '@/components/layout/UserForm';
-import EditableImage from '@/components/layout/EditableImage';
 import React, { useEffect, useState } from 'react'
 import {toast} from 'react-hot-toast';
 
