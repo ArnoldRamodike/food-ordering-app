@@ -9,7 +9,7 @@ export default function Home() {
 
      <Hero/>
      <HomeMenu/>
-     <section className="text-center my-16">
+     <section className="text-center my-16" id='about'>
        <SectionHeader MainHeader={'About us'} subHeader={'Our Stroy'}/>
        <div className="text-gray-500 max-w-md mx-auto  mt-4 flex flex-col gap-4">
         <p >  
@@ -27,7 +27,7 @@ export default function Home() {
   
      </section>
 
-     <section className="text-center mt-8">
+     <section className="text-center mt-8" id='contact'>
        <SectionHeader MainHeader={'Contact us'} subHeader={'Dont hesitate'}/>
         <div className="mt-8">
           <a className="text-4xl underline text-gray-500" href="tel: 08488829"> +27 739710004</a>
