@@ -1,22 +1,40 @@
 'use client'
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SectionHeader from '../../components/layout/SectionHeader';
 import { cartContext, cartProductPrice } from '@/components/AppContext';
 import Link from 'next/link'
 import Image from 'next/image'
-import Trash from '../../components/icons/Trash'
+import Trash from '../../components/icons/Trash';
+import AddressInput from '@/components/layout/AddressInput';
+import { useProfile } from '@/components/layout/UseProfile';
+
 const Cart = () => {
 
+  const [address, setAddress] = useState({});
   const {cartProducts, removeCartProduct} = useContext(cartContext);
+  const {data:profileData} = useProfile();
+  
+  useEffect(() => {
+    if (profileData?.city) {
+      const {phone, country, city, streetAddress, postalCode} = profileData;
+      const addressFromProfile = {phone, country, city, streetAddress, postalCode};
+      setAddress(addressFromProfile);
+    }
+  }
+  
+  ,[profileData])
+
   let total = 0;
 
   for(const p of cartProducts){
-   
     total += cartProductPrice(p);
-
   }
-console.log(total);
+
+  function handleAddressChange(propName, value){
+    setAddress(prevAddress => ({...prevAddress, [propName]:value}));
+  }
+
   return (
     <section className='mt-8'>
       <div className="text-center">
@@ -61,8 +79,13 @@ console.log(total);
             <span className='text-gray-500'> SubTotal: </span> <span className='text-lg font-semibold'>{total}</span>
           </div>
         </div>
-        <div>
-            right
+        <div className='bg-gray-200 p-4 rounded-lg'>
+            <h2>Checkout</h2>
+            <form>
+              <label>Address</label>
+              <AddressInput addressProps={address} setAdressProp={handleAddressChange}/>
+              <button type='submit'>Pay {total}</button>
+            </form>
         </div>
       </div>
     </section>
