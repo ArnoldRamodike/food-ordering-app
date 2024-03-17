@@ -24,20 +24,15 @@ function MenuItem(menuItem) {
 
   function handleAddToCartbuttonClick() {
 
-    if (showPopUp) {
-      addToCart(menuItem, selectedSize, selectedPrice);
-      toast.success('added to cart');
-      setShowPopUp(false);
+    const hasOptions = sizes.length > 0 && extraIngridientPrices.length > 0;
+    if (hasOptions && !showPopUp) {
+      setShowPopUp(true);
       return
     }
 
-    if (sizes.length === 0 && extraIngridientPrices.length === 0) {
-      addToCart(menuItem);
+      addToCart(menuItem, selectedSize, selectedPrice);
+      setShowPopUp(false);
       toast.success('added to cart');
-  
-    }else{
-      setShowPopUp(true);
-    }
   }
 
   let selectedPrice = basePrice;
