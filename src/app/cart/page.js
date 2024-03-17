@@ -9,21 +9,28 @@ import Trash from '../../components/icons/Trash'
 const Cart = () => {
 
   const {cartProducts, removeCartProduct} = useContext(cartContext);
+  let total = 0;
 
+  for(const p of cartProducts){
+   
+    total += cartProductPrice(p);
+
+  }
+console.log(total);
   return (
     <section className='mt-8'>
       <div className="text-center">
         <SectionHeader MainHeader={'Cart'}/>
       </div>
  
-      <div className='grid gap-4 grid-cols-2'>
+      <div className='mt-4 grid gap-4 grid-cols-2'>
         <div>
           {cartProducts?.length === 0 && (
-            <div className="">NO PRoducts in your shopping cart <Link className='button' href={'/menu'}> Shop</Link> </div>
+            <div className=" text-center gap-4 py-8">NO PRoducts in your shopping cart <Link className='button m-4' href={'/menu'}> View our menu Items</Link> </div>
           )}
-          {cartProducts?.length > 0 && cartProducts.map((product, index) =>(
-            <div className="flex" key={product.id}>
-              <div className="w-24 gap-4 mb-2 border-b py-2 items-center">
+          {cartProducts?.length > 0 && cartProducts.map((product, index) => (
+            <div className="flex items-center gap-4 mb-2 border-b py-2" key={product.id}>
+              <div className="w-24 ">
                   <Image src={product.image} alt='Cart Image' width={240} height={240}/>
               </div>
               <div className="text-centre">
@@ -50,6 +57,9 @@ const Cart = () => {
               </div>
             </div>
           ))}
+          <div className='py-4 text-right pr-16'>
+            <span className='text-gray-500'> SubTotal: </span> <span className='text-lg font-semibold'>{total}</span>
+          </div>
         </div>
         <div>
             right
