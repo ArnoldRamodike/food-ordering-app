@@ -41,13 +41,13 @@ const Cart = () => {
         <SectionHeader MainHeader={'Cart'}/>
       </div>
  
-      <div className='mt-4 grid gap-4 grid-cols-2'>
+      <div className='mt-8 grid gap-8 grid-cols-2'>
         <div>
           {cartProducts?.length === 0 && (
             <div className=" text-center gap-4 py-8">NO PRoducts in your shopping cart <Link className='button m-4' href={'/menu'}> View our menu Items</Link> </div>
           )}
           {cartProducts?.length > 0 && cartProducts.map((product, index) => (
-            <div className="flex items-center gap-4 mb-2 border-b py-2" key={product.id}>
+            <div className="flex items-center gap-4 border-b py-4" key={product.id}>
               <div className="w-24 ">
                   <Image src={product.image} alt='Cart Image' width={240} height={240}/>
               </div>
