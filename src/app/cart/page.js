@@ -62,7 +62,7 @@ const Cart = () => {
                        
                     <div className="text-sm text-gray-500 ">              
                        {product.extraIngridientPrices.map(extra => (
-                        <div>{extra.name} ${extra.price}</div>
+                        <div key={extra.id}>{extra.name} ${extra.price}</div>
                       ))}
                     </div>
                   )}
