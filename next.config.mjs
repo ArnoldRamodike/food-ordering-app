@@ -8,6 +8,10 @@ const nextConfig = {
 
             },
             {
+                hostname: 'utfs.io',
+
+            },
+            {
                 protocol: 'https',
                 hostname: 'ricco-food-ordering.s3.amazonaws.com',
             },
