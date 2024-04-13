@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import EditableImage from '@/components/layout/EditableImage';
 import MenuItemPriceProps from '@/components/layout/MenuItemsProps'
+import ImageUpload from '@/components/layout/image-upload'
 
 export default function MenuItemForm ({onSubmit, menuItem}) {
 
@@ -29,6 +30,7 @@ export default function MenuItemForm ({onSubmit, menuItem}) {
          <div className='grid items-start gap-4' style={{gridTemplateColumns: '.3fr .7fr'}}>
             <div>
                 <EditableImage link={image} setLink={setImage}/>
+                <ImageUpload/>
             </div>
 
             <div className='grow'>
