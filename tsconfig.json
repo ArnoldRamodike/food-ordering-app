@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/api/auth/[...nextauth]/route.js"  ],
+, "src/app/api/auth/[...nextauth]/route.js", "src/app/api/uploadthing/route.js", "src/app/api/uploadthing/route.js", "src/app/api/uploadthing/core.js"  ],
   "exclude": [
     "node_modules"
   ]

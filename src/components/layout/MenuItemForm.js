@@ -29,8 +29,8 @@ export default function MenuItemForm ({onSubmit, menuItem}) {
             className="mt-8 max-w-2xl mx-auto">
          <div className='grid items-start gap-4' style={{gridTemplateColumns: '.3fr .7fr'}}>
             <div>
-                <EditableImage link={image} setLink={setImage}/>
-                <ImageUpload/>
+                {/* <EditableImage link={image} setLink={setImage}/> */}
+                <ImageUpload link={image} setLink={setImage}/>
             </div>
 
             <div className='grow'>
