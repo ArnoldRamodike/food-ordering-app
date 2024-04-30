@@ -40,13 +40,13 @@ const MenuItemsPage = () => {
         </Link>
        </div>
        <div>
-        <h2 className='text-sm text-gray-500 mt-8'>Edid Menu Items</h2>
+        <h2 className='text-sm text-gray-500 mt-8'>Edit Menu Items</h2>
         <div className='grid grid-cols-3 gap-2'>
           {MenuItems?.length > 0 && MenuItems.map(item => (
             <Link href={'menu-items/edit/'+item._id} key={item._id} 
-                className='bg-gray-200 rounded-lg p-4 button '>
-                <div className='relative'>
-                <Image className='rounded-md' src={item.image} alt={'Item Image'} width={100} height={100} />
+                className='bg-gray-200 rounded-lg p-4 button flex flex-col mt-2 '>
+                <div className='h-40 relative overflow-hidden'>
+                <Image className='rounded-md object-cover h-full ' src={item.image} alt={'Item Image'} width={200} height={100} />
                 </div>
                 <div className='text-center'>
                     {item.name}
