@@ -62,13 +62,13 @@ const Cart = () => {
                        
                     <div className="text-sm text-gray-500 ">              
                        {product.extraIngridientPrices.map(extra => (
-                        <div key={extra.id}>{extra.name} ${extra.price}</div>
+                        <div key={extra.id}>{extra.name} R{extra.price}</div>
                       ))}
                     </div>
                   )}
               </div>
               <div className='text-lg font-semibold'>
-                 ${cartProductPrice(product)}
+                 R{cartProductPrice(product)}
               </div>
               <div className='ml-2'>
                   <button className='p-2' type='button' onClick={() => removeCartProduct(index) }><Trash/></button>

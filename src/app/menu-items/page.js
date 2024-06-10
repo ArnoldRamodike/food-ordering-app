@@ -9,11 +9,13 @@ import EditableImage from '@/components/layout/EditableImage';
 import toast from "react-hot-toast";
 import Right from '@/components/icons/Right';
 import MenuItem from '@/components/menu/MenuItem';
+import { useRouter } from 'next/navigation';
 
 const MenuItemsPage = () => {
 
     const {loading, data} = useProfile();
     const [MenuItems, setMenuItems] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         fetch('/api/menu-items').then(res => {
@@ -28,7 +30,7 @@ const MenuItemsPage = () => {
     }
 
     if (!data.admin) {
-        return 'Not an admin.';
+        return router.push("/");
     }
   return (
     <section className='mt-8 max-w-2xl mx-auto'>

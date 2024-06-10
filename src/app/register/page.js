@@ -38,7 +38,7 @@ function RegisterPage() {
     </h1>
       {userCreated && (
         <div className='mt-4 text-center'>
-          User Created <br/> now you can {' '}
+          {/* User Created <br/> now you can {' '} */}
           <Link className='underline' href={'/login'} >Login &raquo;</Link>
         </div>
       )}
@@ -49,9 +49,9 @@ function RegisterPage() {
       </div>
       )}
     <form className="block max-w-xs mx-auto" onSubmit={handleFormSbumit}>
-        <input type="email" placeholder="email" value={email} onChange={ev => setEmail(ev.target.value)} disabled={creatingUser}/>
+        {/* <input type="email" placeholder="email" value={email} onChange={ev => setEmail(ev.target.value)} disabled={creatingUser}/>
         <input type="password" placeholder="password" value={password} onChange={ev => setPassword(ev.target.value)} disabled={creatingUser}/>
-        <button type="submit"  disabled={creatingUser}>Register</button>
+        <button type="submit"  disabled={creatingUser}>Register</button> */}
 
         <div className="my-4 text-center text-gray-500"> or login with Provider</div>
            <button onClick={() => signIn('google', {callbackUrl:'/'})} className="flex gap-4 justify-center">
