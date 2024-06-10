@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { cartContext } from '../AppContext'
+import { cartContext } from '../context/AppContext'
 import toast from "react-hot-toast";
 import MenuItemTile from './MenuItemTile';
 import Image from 'next/image'

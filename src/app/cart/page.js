@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 import SectionHeader from '../../components/layout/SectionHeader';
-import { cartContext, cartProductPrice } from '@/components/AppContext';
+import { cartContext, cartProductPrice } from '@/components/context/AppContext';
 import Link from 'next/link'
 import Image from 'next/image'
 import Trash from '../../components/icons/Trash';

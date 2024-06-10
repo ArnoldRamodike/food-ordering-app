@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import {signOut, useSession} from 'next-auth/react'
-import { cartContext } from '../AppContext';
+import { cartContext } from '../context/AppContext';
 import ShoppingCart from '../icons/ShoppingCart'
 
 function Header() {
