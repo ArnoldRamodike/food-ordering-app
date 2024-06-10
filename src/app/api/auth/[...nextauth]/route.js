@@ -7,7 +7,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../../../libs/mongoConnect"
 
-export const authOptions = {
+const authOptions = {
 
     secret: process.env.NEXTAUTH_URL,
     adapter: MongoDBAdapter(clientPromise),

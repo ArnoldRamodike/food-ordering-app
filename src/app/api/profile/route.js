@@ -1,6 +1,6 @@
 import mongoose  from "mongoose";
 import { getServerSession } from "next-auth";
-import {authOptions} from '@/app/api/auth/[...nextauth]/route';
+import {POST} from '@/app/api/auth/[...nextauth]/route';
 import { User } from "../../models/User";
 import { UserInfo } from "../../models/UserInfo";
 
@@ -14,7 +14,7 @@ export async function PUT(req){
     if (_id) {
         filter = {_id}
     }else{
-        const session = await getServerSession(authOptions);
+        const session = await getServerSession(POST);
         const email = session.user.email; 
         filter= {email};
     }
@@ -38,7 +38,7 @@ export async function GET(req){
         filterUser = {_id};
 
     }else{
-         const session = await getServerSession(authOptions);
+         const session = await getServerSession(POST);
          const email = session?.user?.email;
          if (!email) {
             return Response.json({});
