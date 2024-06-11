@@ -7,14 +7,14 @@ function Hero() {
     <section className="hero mt-4">
       <div className="py-12 ">
         <h1 className="text-4xl font-semibold">Everything is <br/> Better with a <br/>
-          <span className="text-primary"> pizza </span> 
+          <span className="text-primary"> knechtle </span> 
         </h1>
         <p className="my-6 text-gray-500 text-sm">
-          Pizza is the missisn piece that makes everything 
+        knechtle is the missisn piece that makes everything 
           complete on a work day
         </p>
         <div className="flex gap-4 text-sm">
-            <button className=" flex justify-center bg-primary text-white flex items-center gap-4 px-4 py-2 rounded-full uppercase after:">
+            <button className=" flex justify-center bg-primary text-white items-center gap-4 px-4 py-2 rounded-full uppercase after:">
               Order Now
               <Right/>
             </button>
