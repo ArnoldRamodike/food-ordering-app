@@ -5,8 +5,8 @@ export default function MenuItemTile  ({onAddToCart, ...item}){
     const {image, name, description, basePrice, sizes, extraIngridientPrices } = item;
   return (
     <div className="bg-gray-300 p-4 rounded-lg text-center hover:bg-white hover:shadow-md hover:shadow-black/25 transition-all">
-        <div className="text-center h-40 ">
-            <Image className="block mx-auto aspect-square object-cover h-full rounded-lg" src={image} alt={'Meal'} width={200} height={100}/>
+        <div className=" text-center md:h-40 ">
+            <Image className="block mx-auto sm:w-full aspect-square object-cover h-full rounded-lg " src={image} alt={'Meal'} width={200} height={100}/>
         </div>
 
         <h4 className="font-semibold my-3 text-xl">{name}</h4>
