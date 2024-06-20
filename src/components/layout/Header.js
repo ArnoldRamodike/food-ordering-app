@@ -22,11 +22,11 @@ function Header() {
       <Link className= 'text-primary font-semibold sm:text-2xl text-lg' href="/" >
       Knechtle
       </Link>
-      <div className='hidden text-sm sm:flex sm:text-lg gap-1'>
-        <Link href={'/'}>Home</Link>
+      <div className='text-sm sm:text-lg gap-5 space-x-1'>
+        {/* <Link href={'/'}>Home</Link> */}
         <Link href={'/menu'}>Menu</Link>
         <Link href={'/#about'}>About</Link>
-        <Link href={'/#contact'}>Contact</Link>    
+        {/* <Link href={'/#contact'}>Contact</Link>     */}
       </div>
       
     </nav>

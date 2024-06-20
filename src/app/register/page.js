@@ -7,6 +7,7 @@ import {signIn} from "next-auth/react";
 
 function RegisterPage() {
     const [email, setEmail] = useState('');
+    const [fullName, setFullName] = useState('')
     const [password, setPassword] = useState('');
     const [creatingUser, setCreatingUser] = useState(false)
     const [userCreated, setUserCreated] = useState(true)
@@ -37,7 +38,7 @@ function RegisterPage() {
         Register
     </h1>
       {userCreated && (
-        <div className='mt-4 text-center'>
+        <div className='my-4 text-center'>
           {/* User Created <br/> now you can {' '} */}
           <Link className='underline' href={'/login'} >Login &raquo;</Link>
         </div>
@@ -49,7 +50,8 @@ function RegisterPage() {
       </div>
       )}
     <form className="block max-w-xs mx-auto" onSubmit={handleFormSbumit}>
-        {/* <input type="email" placeholder="email" value={email} onChange={ev => setEmail(ev.target.value)} disabled={creatingUser}/>
+        {/* <input type="text" placeholder="Fullname" value={fullName} onChange={ev => setFullName(ev.target.value)} disabled={creatingUser}/>
+        <input type="email" placeholder="email" value={email} onChange={ev => setEmail(ev.target.value)} disabled={creatingUser}/>
         <input type="password" placeholder="password" value={password} onChange={ev => setPassword(ev.target.value)} disabled={creatingUser}/>
         <button type="submit"  disabled={creatingUser}>Register</button> */}
 
