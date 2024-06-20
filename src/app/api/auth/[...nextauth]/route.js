@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { User } from "@/app/models/User";
 import bcrypt from 'bcrypt';
@@ -7,7 +7,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../../../libs/mongoConnect"
  
- export const authOptions = {
+ const authOptions = ({
 
     secret: process.env.SECRET,
     adapter: MongoDBAdapter(clientPromise),
@@ -20,28 +20,32 @@ import clientPromise from "../../../libs/mongoConnect"
             name: 'Credentials',
             id: 'credentials',
             credentials: {
-                username: {label: 'Email', type: 'email', placeholder: 'test@example.com'},
+                email: {label: 'Email', type: 'email', placeholder: 'test@example.com'},
                 password: {label: 'Password', type: 'password', placeholder: '123ABCdef@.'},
             },
     
             async authorize(credentials, req)
             {
                 const {email, password} = credentials;   
-                mongoose.connect(process.env.MONGO_URL);
+                await mongoose.connect(process.env.MONGO_URL);
                 const user = await User.findOne({email});          
-                const passwordOK = user && bcrypt.compareSYNC(password, user.password);  
+                const passwordOK = user && bcrypt.compareSync(password, user.password);  
                     if (passwordOK) {
                         return user;
                     }   
                 return null
             }
         })
-     ]
+     ],
+     session: {
+        jwt: true, // Ensure JWT sessions are enabled
+      },
+      jwt: {
+        secret: process.env.SECRET, // Ensure this is set
+      },
         
-    }
+    });
 
-const handler = NextAuth(
-    authOptions
-);
-
+const handler = NextAuth(authOptions);
+// export {  authOptions}
 export {handler as GET, handler as POST}
